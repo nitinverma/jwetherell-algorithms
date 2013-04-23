@@ -416,8 +416,8 @@ public class DataStructures {
         BinarySearchTree<Integer> bst = new AVLTree<Integer>();
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
         return true;
     }
 
@@ -426,8 +426,8 @@ public class DataStructures {
         BTree<Integer> bst = new BTree<Integer>(2);
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
         return true;
     }
 
@@ -436,8 +436,8 @@ public class DataStructures {
         BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
         return true;
     }
 
@@ -840,14 +840,14 @@ public class DataStructures {
         String aNameMin = "Min-Heap [array]";
         BinaryHeap.BinaryHeapArray<Integer> aHeapMin = new BinaryHeap.BinaryHeapArray<Integer>(BinaryHeap.Type.MIN);
         Collection<Integer> aCollectionMin = aHeapMin.toCollection();
-        if((validateStructure||validateContents) && !testHeap(aHeapMin,aNameMin,BinaryHeap.Type.MIN)) return false;
-        if(!testJavaCollection(aCollectionMin,Type.Integer,aNameMin)) return false;
+        if((validateStructure||validateContents) && !testHeap(aHeapMin,aNameMin,BinaryHeap.Type.MIN, Integer.class)) return false;
+        if(!testJavaCollection(aCollectionMin,Integer.class,aNameMin)) return false;
 
         String tNameMin = "Min-Heap [tree]";
         BinaryHeap.BinaryHeapTree<Integer> tHeapMin = new BinaryHeap.BinaryHeapTree<Integer>(BinaryHeap.Type.MIN);
         Collection<Integer> tCollectionMin = tHeapMin.toCollection();
-        if((validateStructure||validateContents) && !testHeap(tHeapMin,tNameMin,BinaryHeap.Type.MIN)) return false;
-        if(!testJavaCollection(tCollectionMin,Type.Integer,tNameMin)) return false;
+        if((validateStructure||validateContents) && !testHeap(tHeapMin,tNameMin,BinaryHeap.Type.MIN, Integer.class)) return false;
+        if(!testJavaCollection(tCollectionMin,Integer.class,tNameMin)) return false;
 
         return true;
     }
@@ -856,14 +856,14 @@ public class DataStructures {
         String aNameMax = "Max-Heap [array]";
         BinaryHeap.BinaryHeapArray<Integer> aHeapMax = new BinaryHeap.BinaryHeapArray<Integer>(BinaryHeap.Type.MAX);
         Collection<Integer> aCollectionMax = aHeapMax.toCollection();
-        if((validateStructure||validateContents) && !testHeap(aHeapMax,aNameMax,BinaryHeap.Type.MAX)) return false;
-        if(!testJavaCollection(aCollectionMax,Type.Integer,aNameMax)) return false;
+        if((validateStructure||validateContents) && !testHeap(aHeapMax,aNameMax,BinaryHeap.Type.MAX,Integer.class)) return false;
+        if(!testJavaCollection(aCollectionMax,Integer.class,aNameMax)) return false;
 
         String lNameMax = "Max-Heap [tree]";
         BinaryHeap.BinaryHeapTree<Integer> tHeapMax = new BinaryHeap.BinaryHeapTree<Integer>(BinaryHeap.Type.MAX);
         Collection<Integer> tCollectionMax = tHeapMax.toCollection();
-        if((validateStructure||validateContents) && !testHeap(tHeapMax,lNameMax,BinaryHeap.Type.MAX)) return false;
-        if(!testJavaCollection(tCollectionMax,Type.Integer,lNameMax)) return false;
+        if((validateStructure||validateContents) && !testHeap(tHeapMax,lNameMax,BinaryHeap.Type.MAX,Integer.class)) return false;
+        if(!testJavaCollection(tCollectionMax,Integer.class,lNameMax)) return false;
 
         return true;
     }
@@ -964,7 +964,7 @@ public class DataStructures {
                         return 0;
                     }
                 });
-        if(!testJavaCollection(minArrayHeap,Type.Integer,"Java's Min-Heap [array]")) return false;
+        if(!testJavaCollection(minArrayHeap,Integer.class,"Java's Min-Heap [array]")) return false;
 
         return true;
     }
@@ -982,17 +982,17 @@ public class DataStructures {
                         return 0;
                     }
                 });
-        if(!testJavaCollection(maxArrayHeap,Type.Integer,"Java's Max-Heap [array]")) return false;
+        if(!testJavaCollection(maxArrayHeap,Integer.class,"Java's Max-Heap [array]")) return false;
         return true;
     }
 
     private static boolean testJavaArrayList() {
-        if(!testJavaCollection(new java.util.ArrayList<Integer>(),Type.Integer,"Java's List [array]")) return false;
+        if(!testJavaCollection(new java.util.ArrayList<Integer>(),Integer.class,"Java's List [array]")) return false;
         return true;
     }
 
     private static boolean testJavaLinkedList() {
-        if(!testJavaCollection(new java.util.LinkedList<Integer>(),Type.Integer,"Java's List [linked]")) return false;
+        if(!testJavaCollection(new java.util.LinkedList<Integer>(),Integer.class,"Java's List [linked]")) return false;
         return true;
     }
 
@@ -1000,7 +1000,7 @@ public class DataStructures {
         String aName = "Java's Queue [array]";
         java.util.Deque<Integer> aCollection = new java.util.ArrayDeque<Integer>();
 
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
@@ -1008,28 +1008,28 @@ public class DataStructures {
         String lName = "Java's Queue [linked]";
         java.util.Deque<Integer> lCollection = new java.util.LinkedList<Integer>();
 
-        if(!testJavaCollection(lCollection,Type.Integer,lName)) return false;
+        if(!testJavaCollection(lCollection,Integer.class,lName)) return false;
         return true;
     }
 
     private static boolean testJavaRedBlackIntegerTree() {
         String aName = "Java's Red-Black Tree [Integer]";
         java.util.TreeSet<Integer> aCollection = new java.util.TreeSet<Integer>();
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
     private static boolean testJavaRedBlackStringTree() {
         String aName = "Java's Red-Black Tree [String]";
         java.util.TreeSet<String> aCollection = new java.util.TreeSet<String>();
-        if(!testJavaCollection(aCollection,Type.String,aName)) return false;
+        if(!testJavaCollection(aCollection,String.class,aName)) return false;
         return true;
     }
 
     private static boolean testJavaStack() {
         String aName = "Java's Stack [array]";
         java.util.Stack<Integer> aCollection = new java.util.Stack<Integer>();
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
@@ -1090,8 +1090,8 @@ public class DataStructures {
         List.ArrayList<Integer> aList = new List.ArrayList<Integer>();
         Collection<Integer> aCollection = aList.toCollection();
 
-        if((validateStructure||validateContents) && !testList(aList,aName)) return false;
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if((validateStructure||validateContents) && !testList(aList,aName, Integer.class)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
@@ -1100,8 +1100,8 @@ public class DataStructures {
         List.LinkedList<Integer> lList = new List.LinkedList<Integer>();
         Collection<Integer> lCollection = lList.toCollection();
 
-        if((validateStructure||validateContents) && !testList(lList,lName)) return false;
-        if(!testJavaCollection(lCollection,Type.Integer,lName)) return false;
+        if((validateStructure||validateContents) && !testList(lList,lName, Integer.class)) return false;
+        if(!testJavaCollection(lCollection,Integer.class,lName)) return false;
         return true;
     }
 
@@ -1175,8 +1175,8 @@ public class DataStructures {
         PatriciaTrie<String> bst = new PatriciaTrie<String>();
         Collection<String> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.String,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.String,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,String.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,String.class,bstName)) return false;
         return true;
     }
 
@@ -1349,8 +1349,8 @@ public class DataStructures {
         Queue.ArrayQueue<Integer> aQueue = new Queue.ArrayQueue<Integer>();
         Collection<Integer> aCollection = aQueue.toCollection();
 
-        if((validateStructure||validateContents) && !testQueue(aQueue,aName)) return false;
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if((validateStructure||validateContents) && !testQueue(aQueue,aName, Integer.class)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
@@ -1359,8 +1359,8 @@ public class DataStructures {
         Queue.LinkedQueue<Integer> lQueue = new Queue.LinkedQueue<Integer>();
         Collection<Integer> lCollection = lQueue.toCollection();
 
-        if((validateStructure||validateContents) && !testQueue(lQueue,lName)) return false;
-        if(!testJavaCollection(lCollection,Type.Integer,lName)) return false;
+        if((validateStructure||validateContents) && !testQueue(lQueue,lName, Integer.class)) return false;
+        if(!testJavaCollection(lCollection,Integer.class,lName)) return false;
         return true;
     }
 
@@ -1379,8 +1379,8 @@ public class DataStructures {
         RedBlackTree<Integer> bst = new RedBlackTree<Integer>();
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
 
         return true;
     }
@@ -1572,8 +1572,8 @@ public class DataStructures {
         SkipList<Integer> sList = new SkipList<Integer>();
         Collection<Integer> lCollection = sList.toCollection();
 
-        if((validateStructure||validateContents) && !testList(sList,sName)) return false;
-        if(!testJavaCollection(lCollection,Type.Integer,sName)) return false;
+        if((validateStructure||validateContents) && !testList(sList,sName, Integer.class)) return false;
+        if(!testJavaCollection(lCollection,Integer.class,sName)) return false;
         return true;
     }
 
@@ -1582,8 +1582,8 @@ public class DataStructures {
         BinarySearchTree<Integer> bst = new SplayTree<Integer>();
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
 
         return true;
     }
@@ -1593,8 +1593,8 @@ public class DataStructures {
         Stack.ArrayStack<Integer> aStack = new Stack.ArrayStack<Integer>();
         Collection<Integer> aCollection = aStack.toCollection();
 
-        if((validateStructure||validateContents) && !testStack(aStack,aName)) return false;
-        if(!testJavaCollection(aCollection,Type.Integer,aName)) return false;
+        if((validateStructure||validateContents) && !testStack(aStack,aName, Integer.class)) return false;
+        if(!testJavaCollection(aCollection,Integer.class,aName)) return false;
         return true;
     }
 
@@ -1603,8 +1603,8 @@ public class DataStructures {
         Stack.LinkedStack<Integer> lStack = new Stack.LinkedStack<Integer>();
         Collection<Integer> lCollection = lStack.toCollection();
 
-        if((validateStructure||validateContents) && !testStack(lStack,lName)) return false;
-        if(!testJavaCollection(lCollection,Type.Integer,lName)) return false;
+        if((validateStructure||validateContents) && !testStack(lStack,lName, Integer.class)) return false;
+        if(!testJavaCollection(lCollection,Integer.class,lName)) return false;
         return true;
     }
 
@@ -1683,8 +1683,8 @@ public class DataStructures {
         BinarySearchTree<Integer> bst = new Treap<Integer>();
         Collection<Integer> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.Integer,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.Integer,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,Integer.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,Integer.class,bstName)) return false;
         return true;
     }
 
@@ -1703,8 +1703,8 @@ public class DataStructures {
         Trie<String> bst = new Trie<String>();
         Collection<String> bstCollection = bst.toCollection();
 
-        if((validateStructure||validateContents) && !testTree(bst,Type.String,bstName)) return false;
-        if(!testJavaCollection(bstCollection,Type.String,bstName)) return false;
+        if((validateStructure||validateContents) && !testTree(bst,String.class,bstName)) return false;
+        if(!testJavaCollection(bstCollection,String.class,bstName)) return false;
         return true;
     }
 
@@ -1878,21 +1878,34 @@ public class DataStructures {
         return true;
     }
 
+    private static <T> T parseT(final Integer value, final Class<T> type) {
+        T returnValue = null;
+
+        if (type == null) {
+            throw new NullPointerException("Type can not be null");
+        }
+        else if(Integer.class.equals(type)) {
+            returnValue = type.cast(value);
+        }
+        else if(String.class.equals(type)) {
+            returnValue = type.cast(String.valueOf(value));
+        }
+        else {
+            throw new IllegalArgumentException("Unsupported type " + type.getName());
+        }
+        return returnValue;
+    }
+
     /**
      * Tests the tree operations
      * 
      * @param tree to test.
      * @return True is works as a tree structure.
      */
-    private static <T extends Comparable<T>> boolean testTree(ITree<T> tree, Type type, String name) {
+    private static <T extends Comparable<T>> boolean testTree(ITree<T> tree, Class<T> type, String name) {
         for (int i = 0; i < unsorted.length; i++) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value, type);
             tree.add(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -1906,12 +1919,7 @@ public class DataStructures {
             }
         }
 
-        T invalidItem = null;
-        if (type == Type.Integer) {
-            invalidItem = (T)INVALID;
-        } else if (type == Type.String) {
-            invalidItem = (T)String.valueOf(INVALID);
-        }
+        T invalidItem = parseT(INVALID,type);
         boolean contains = tree.contains(invalidItem);
         if (contains) {
             System.err.println(name+" invalidity check. contains=" + contains);
@@ -1922,12 +1930,7 @@ public class DataStructures {
         int size = tree.size();
         for (int i = 0; i < size; i++) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value,type);
             Object removed = tree.remove(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -1946,12 +1949,7 @@ public class DataStructures {
         int half = unsorted.length/2;
         for (int i = 0; i < half; i++) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value,type);;
             tree.add(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -1966,12 +1964,7 @@ public class DataStructures {
         }
         for (int i = (half-1); i >= quarter; i--) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value,type);
             Object removed = tree.remove(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -1986,12 +1979,7 @@ public class DataStructures {
         }
         for (int i = quarter; i < unsorted.length; i++) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value,type);;
             tree.add(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2006,12 +1994,7 @@ public class DataStructures {
         }
         for (int i = unsorted.length-1; i >= 0; i--) {
             Integer value = unsorted[i];
-            T item = null;
-            if (type == Type.Integer) {
-                item = (T)value;
-            } else if (type == Type.String) {
-                item = (T)String.valueOf(value);
-            }
+            T item = parseT(value,type);;
             Object removed = tree.remove(item);
             if (validateStructure && !tree.validate()  && !(tree.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2040,9 +2023,9 @@ public class DataStructures {
      * @param heap to test.
      * @return True is works as a heap structure.
      */
-    private static <T extends Comparable<T>> boolean testHeap(IHeap<T> heap, String name, BinaryHeap.Type type) {
+    private static <T extends Comparable<T>> boolean testHeap(IHeap<T> heap, String name, BinaryHeap.Type type, Class<T> clazz) {
         for (int i = 0; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i],clazz);
             heap.add(item);
             if (validateStructure && !heap.validate()  && !(heap.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2056,7 +2039,7 @@ public class DataStructures {
             }
         }
 
-        boolean contains = heap.contains((T)INVALID);
+        boolean contains = heap.contains(parseT(INVALID,clazz));
         if (contains) {
             System.err.println(name+" invalidity check. contains=" + contains);
             handleError(heap);
@@ -2066,7 +2049,7 @@ public class DataStructures {
         int size = heap.size();
         for (int i = 0; i < size; i++) {
             T item = heap.removeHead();
-            T correct = (T)((type == BinaryHeap.Type.MIN)?sorted[i]:sorted[sorted.length-(i+1)]);
+            T correct = parseT( (type == BinaryHeap.Type.MIN)?sorted[i]:sorted[sorted.length-(i+1)], clazz );
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match heap item.");
                 handleError(heap);
@@ -2117,7 +2100,7 @@ public class DataStructures {
         	}
         }
         for (int i = 0; i < half; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             heap.add(item);
             if (validateStructure && !heap.validate()  && !(heap.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2132,7 +2115,7 @@ public class DataStructures {
         }
         for (int i = 0; i < quarter; i++) {
             T item = heap.removeHead();
-            T correct = (T)quarterArray[i];
+            T correct = parseT(quarterArray[i], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match heap item.");
                 handleError(heap);
@@ -2150,7 +2133,7 @@ public class DataStructures {
             }
         }
         for (int i = 0; i < threeQuartersArray.length; i++) {
-            T item = (T)threeQuartersArray[i];
+            T item = parseT(threeQuartersArray[i], clazz);
             heap.add(item);
             if (validateStructure && !heap.validate()  && !(heap.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2165,7 +2148,7 @@ public class DataStructures {
         }
         for (int i = 0; i < sorted.length; i++) {
             T item = heap.removeHead();
-            T correct = (T)((type == BinaryHeap.Type.MIN)?sorted[i]:sorted[sorted.length-(i+1)]);
+            T correct = parseT((type == BinaryHeap.Type.MIN)?sorted[i]:sorted[sorted.length-(i+1)], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match heap item.");
                 handleError(heap);
@@ -2198,9 +2181,9 @@ public class DataStructures {
      * @param queue to test.
      * @return True is works as a FIFO structure.
      */
-    private static <T extends Comparable<T>> boolean testQueue(IQueue<T> queue, String name) {
+    private static <T extends Comparable<T>> boolean testQueue(IQueue<T> queue, String name, Class<T> clazz) {
         for (int i = 0; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             queue.offer(item);
             if (validateStructure && !queue.validate()  && !(queue.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2214,7 +2197,7 @@ public class DataStructures {
             }
         }
 
-        boolean contains = queue.contains((T)INVALID);
+        boolean contains = queue.contains(parseT(INVALID, clazz));
         if (contains) {
             System.err.println(name+" invalidity check. contains=" + contains);
             handleError(queue);
@@ -2224,7 +2207,7 @@ public class DataStructures {
         int size = queue.size();
         for (int i = 0; i < size; i++) {
             T item = queue.poll();
-            T correct = (T)unsorted[i];
+            T correct = parseT(unsorted[i], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match FIFO item.");
                 handleError(queue);
@@ -2247,7 +2230,7 @@ public class DataStructures {
         int half = unsorted.length/2;
         int changeOver = half-quarter;
         for (int i = 0; i < half; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i],clazz);
             queue.offer(item);
             if (validateStructure && !queue.validate()  && !(queue.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2262,7 +2245,7 @@ public class DataStructures {
         }
         for (int i = 0; i < quarter; i++) {
             T item = queue.poll();
-            T correct = (T)unsorted[i];
+            T correct = parseT(unsorted[i], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match FIFO item.");
                 handleError(queue);
@@ -2280,7 +2263,7 @@ public class DataStructures {
             }
         }
         for (int i = 0; i < quarter; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             queue.offer(item);
             if (validateStructure && !queue.validate()  && !(queue.size() == (half - quarter) + i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2294,7 +2277,7 @@ public class DataStructures {
             }
         }
         for (int i = half; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             queue.offer(item);
             if (validateStructure && !queue.validate()  && !(queue.size() == (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2315,7 +2298,7 @@ public class DataStructures {
             } else if (idx>=changeOver && idx<half) {
             	idx = i-changeOver;
             }
-            T correct = (T)unsorted[idx];
+            T correct = parseT(unsorted[idx], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match FIFO item.");
                 handleError(queue);
@@ -2348,9 +2331,9 @@ public class DataStructures {
      * @param stack to test.
      * @return True is works as a LIFO structure.
      */
-    private static <T extends Comparable<T>> boolean testStack(IStack<T> stack, String name) {
+    private static <T extends Comparable<T>> boolean testStack(IStack<T> stack, String name, Class<T> clazz) {
         for (int i = 0; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             stack.push(item);
             if (validateStructure && !stack.validate()  && !(stack.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2364,7 +2347,7 @@ public class DataStructures {
             }
         }
 
-        boolean contains = stack.contains((T)INVALID);
+        boolean contains = stack.contains(parseT(INVALID,clazz));
         if (contains) {
             System.err.println(name+" invalidity check. contains=" + contains);
             handleError(stack);
@@ -2374,7 +2357,7 @@ public class DataStructures {
         int size = stack.size();
         for (int i = 0; i < size; i++) {
             T item = stack.pop();
-            T correct = (T)unsorted[unsorted.length-(i+1)];
+            T correct = parseT(unsorted[unsorted.length-(i+1)], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match LIFO item.");
                 handleError(stack);
@@ -2396,7 +2379,7 @@ public class DataStructures {
         int quarter = unsorted.length/4;
         int half = unsorted.length/2;
         for (int i = 0; i < half; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             stack.push(item);
             if (validateStructure && !stack.validate()  && !(stack.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2411,7 +2394,7 @@ public class DataStructures {
         }
         for (int i = (half-1); i >= quarter; i--) {
             T item = stack.pop();
-            T correct = (T)unsorted[i];
+            T correct = parseT(unsorted[i], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match LIFO item.");
                 handleError(stack);
@@ -2429,7 +2412,7 @@ public class DataStructures {
             }
         }
         for (int i = quarter; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             stack.push(item);
             if (validateStructure && !stack.validate()  && !(stack.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2444,7 +2427,7 @@ public class DataStructures {
         }
         for (int i = unsorted.length-1; i >= 0; i--) {
             T item = stack.pop();
-            T correct = (T)unsorted[i];
+            T correct = parseT(unsorted[i], clazz);
             if (validateStructure && (item.compareTo(correct)!=0)) {
                 System.err.println(name+" YIKES!! " + item + " does not match LIFO item.");
                 handleError(stack);
@@ -2477,9 +2460,9 @@ public class DataStructures {
      * @param list to test.
      * @return True is works as a list structure.
      */
-    private static <T extends Comparable<T>> boolean testList(IList<T> list, String name) {
+    private static <T extends Comparable<T>> boolean testList(IList<T> list, String name, Class<T> clazz) {
         for (int i = 0; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             list.add(item);
             if (validateStructure && !list.validate()  && !(list.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2493,7 +2476,7 @@ public class DataStructures {
             }
         }
 
-        boolean contains = list.contains((T)INVALID);
+        boolean contains = list.contains(parseT(INVALID, clazz));
         if (contains) {
             System.err.println(name+" invalidity check. contains=" + contains);
             handleError(list);
@@ -2502,7 +2485,7 @@ public class DataStructures {
 
         int size = list.size();
         for (int i = 0; i < size; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             boolean removed = list.remove(item);
             if (validateStructure && !list.validate()  && !(list.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2520,7 +2503,7 @@ public class DataStructures {
         int quarter = unsorted.length/4;
         int half = unsorted.length/2;
         for (int i = 0; i < half; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             list.add(item);
             if (validateStructure && !list.validate()  && !(list.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2534,7 +2517,7 @@ public class DataStructures {
             }
         }
         for (int i = (half-1); i >= quarter; i--) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             boolean removed = list.remove(item);
             if (validateStructure && !list.validate()  && !(list.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2548,7 +2531,7 @@ public class DataStructures {
             }
         }
         for (int i = quarter; i < unsorted.length; i++) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             list.add(item);
             if (validateStructure && !list.validate()  && !(list.size() == i + 1)) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2562,7 +2545,7 @@ public class DataStructures {
             }
         }
         for (int i = unsorted.length-1; i >= 0; i--) {
-            T item = (T)unsorted[i];
+            T item = parseT(unsorted[i], clazz);
             boolean removed = list.remove(item);
             if (validateStructure && !list.validate()  && !(list.size() == unsorted.length - (i + 1))) {
                 System.err.println(name+" YIKES!! " + item + " caused a size mismatch.");
@@ -2585,7 +2568,7 @@ public class DataStructures {
         return true;
     }
 
-    private static <T extends Comparable<T>> boolean testJavaCollection(Collection<T> collection, Type type, String name) {
+    private static <T extends Comparable<T>> boolean testJavaCollection(Collection<T> collection, Class<T> type, String name) {
         // Make sure the collection is empty
         if (!collection.isEmpty()) {
             System.err.println(name+" initial isEmpty() failed.");
@@ -2631,12 +2614,7 @@ public class DataStructures {
             if (debugMemory) beforeMemory = DataStructures.getMemoryUse();
             if (debugTime) beforeAddTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.add(item);
             }
             if (debugTime) {
@@ -2662,12 +2640,7 @@ public class DataStructures {
             afterLookupTime = 0L;
             if (debugTime) beforeLookupTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.contains(item);
             }
             if (debugTime) {
@@ -2680,12 +2653,7 @@ public class DataStructures {
             afterRemoveTime = 0L;
             if (debugTime) beforeRemoveTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.remove(item);
             }
             if (debugTime) {
@@ -2705,7 +2673,8 @@ public class DataStructures {
                 return false;
             }
 
-            if (validateIterator && collection instanceof java.util.List && !testListIterator(((java.util.List<T>)collection).listIterator())) {
+            // TODO
+            if (validateIterator && collection instanceof java.util.List && !testListIterator( ((java.util.List<T>)collection).listIterator(), type)) {
                 System.err.println(name+" unsorted list iterator failed.");
                 handleError(collection);
                 return false;
@@ -2721,12 +2690,7 @@ public class DataStructures {
             if (debugMemory) beforeMemory = DataStructures.getMemoryUse();
             if (debugTime) beforeAddTime = System.currentTimeMillis();
             for (int i = unsorted.length - 1; i >= 0; i--) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.add(item);
             }
             if (debugTime) {
@@ -2752,12 +2716,7 @@ public class DataStructures {
             afterLookupTime = 0L;
             if (debugTime) beforeLookupTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.contains(item);
             }
             if (debugTime) {
@@ -2770,12 +2729,7 @@ public class DataStructures {
             afterRemoveTime = 0L;
             if (debugTime) beforeRemoveTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)unsorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(unsorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.remove(item);
             }
             if (debugTime) {
@@ -2814,12 +2768,7 @@ public class DataStructures {
             if (debugMemory) beforeMemory = DataStructures.getMemoryUse();
             if (debugTime) beforeAddSortedTime = System.currentTimeMillis();
             for (int i = 0; i < sorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(sorted[i], type);
                 collection.add(item);
             }
             if (debugTime) {
@@ -2845,12 +2794,7 @@ public class DataStructures {
             afterLookupTime = 0L;
             if (debugTime) beforeLookupTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(unsorted[i], type);
                 collection.contains(item);
             }
             if (debugTime) {
@@ -2863,12 +2807,7 @@ public class DataStructures {
             afterRemoveSortedTime = 0L;
             if (debugTime) beforeRemoveSortedTime = System.currentTimeMillis();
             for (int i = 0; i < sorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(sorted[i], type);
                 collection.remove(item);
             }
             if (debugTime) {
@@ -2887,8 +2826,8 @@ public class DataStructures {
                 handleError(collection);
                 return false;
             }
-
-            if (validateIterator && collection instanceof java.util.List && !testListIterator(((java.util.List<T>)collection).listIterator())) {
+            // TODO
+            if (validateIterator && collection instanceof java.util.List && !testListIterator(((java.util.List<T>)collection).listIterator(), type)) {
                 System.err.println(name+" sorted list iterator failed.");
                 handleError(collection);
                 return false;
@@ -2904,12 +2843,7 @@ public class DataStructures {
             if (debugMemory) beforeMemory = DataStructures.getMemoryUse();
             if (debugTime) beforeAddSortedTime = System.currentTimeMillis();
             for (int i = 0; i < sorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(sorted[i], type);
                 collection.add(item);
             }
             if (debugTime) {
@@ -2935,12 +2869,7 @@ public class DataStructures {
             afterLookupTime = 0L;
             if (debugTime) beforeLookupTime = System.currentTimeMillis();
             for (int i = 0; i < unsorted.length; i++) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(unsorted[i],type);
                 collection.contains(item);
             }
             if (debugTime) {
@@ -2953,12 +2882,7 @@ public class DataStructures {
             afterRemoveSortedTime = 0L;
             if (debugTime) beforeRemoveSortedTime = System.currentTimeMillis();
             for (int i = sorted.length - 1; i >= 0; i--) {
-                T item = null;
-                if (type==Type.Integer) {
-                    item = (T)sorted[i];
-                } else if (type==Type.String) {
-                    item = (T)String.valueOf(sorted[i]);
-                }
+                T item = parseT(sorted[i], type);
                 collection.remove(item);
             }
             if (debugTime) {
@@ -2978,7 +2902,8 @@ public class DataStructures {
                 return false;
             }
 
-            if (validateIterator && collection instanceof java.util.List && !testListIterator(((java.util.List<T>)collection).listIterator())) {
+            // TODO
+            if (validateIterator && collection instanceof java.util.List && !testListIterator(((java.util.List<T>)collection).listIterator(), type)) {
                 System.err.println(name+" sorted list iterator failed.");
                 handleError(collection);
                 return false;
@@ -3559,7 +3484,7 @@ public class DataStructures {
         return true;
     }
 
-    private static <T extends Comparable<T>> boolean testListIterator(ListIterator<T> iter) {
+    private static <T extends Comparable<T>> boolean testListIterator(ListIterator<T> iter, Class<T> clazz) {
         // Make sure you catch going prev at the start
         boolean exceptionThrown = false;
         try {
@@ -3573,7 +3498,7 @@ public class DataStructures {
         }
 
         for (int i = 0; i < unsorted.length; i++) {
-            T t = (T)unsorted[i];
+            T t = parseT(unsorted[i], clazz);
             iter.add(t);
         }
         while (iter.hasPrevious()) iter.previous();
