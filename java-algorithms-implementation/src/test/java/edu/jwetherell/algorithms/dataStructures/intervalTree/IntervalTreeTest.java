@@ -3,6 +3,7 @@ package edu.jwetherell.algorithms.dataStructures.intervalTree;
 import edu.jwetherell.algorithms.dataStructures.IntervalTree;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.Sets;
@@ -271,21 +272,48 @@ public class IntervalTreeTest {
     @Test
     public void rectangularInterval() {
         final Set<Rectangle> rectangularInterval = new TreeSet<Rectangle>();
-        rectangularInterval.add(new Rectangle(new Line(1,3), new Line(1,3)));
-        rectangularInterval.add(new Rectangle(new Line(4,5), new Line(3,4)));
-        rectangularInterval.add(new Rectangle(new Line(6,7), new Line(3,4)));
-        rectangularInterval.add(new Rectangle(new Line(2,3), new Line(5,6)));
-        rectangularInterval.add(new Rectangle(new Line(4,5), new Line(5,6)));
-        rectangularInterval.add(new Rectangle(new Line(6,7), new Line(5,6)));
-        rectangularInterval.add(new Rectangle(new Line(5,7), new Line(7,9)));
-        rectangularInterval.add(new Rectangle(new Line(7,8), new Line(8,9)));
+
+        final List<Rectangle> testRectangleList =
+                new ArrayList<Rectangle>();
+
+        final Rectangle rectangle1 = new Rectangle(new Line(1,3), new Line(1,3));
+        testRectangleList.add(rectangle1);
+        final Rectangle rectangle2 = new Rectangle(new Line(4,5), new Line(3,4));
+        testRectangleList.add(rectangle2);
+        final Rectangle rectangle3 = new Rectangle(new Line(6,7), new Line(3,4));
+        testRectangleList.add(rectangle3);
+        final Rectangle rectangle4 = new Rectangle(new Line(2,3), new Line(5,6));
+        testRectangleList.add(rectangle4);
+        final Rectangle rectangle5 = new Rectangle(new Line(4,5), new Line(5,6));
+        testRectangleList.add(rectangle5);
+        final Rectangle rectangle6 = new Rectangle(new Line(6,7), new Line(5,6));
+        testRectangleList.add(rectangle6);
+        final Rectangle rectangle7 = new Rectangle(new Line(5,7), new Line(7,9));
+        testRectangleList.add(rectangle7);
+        final Rectangle rectangle8 = new Rectangle(new Line(7,8), new Line(8,9));
+        testRectangleList.add(rectangle8);
+
+        for (final Rectangle rectangle : testRectangleList) {
+            rectangularInterval.add(rectangle);
+        }
 
         final RectangularIntervalTree RectangularIntervalTree =
                 new RectangularIntervalTree(rectangularInterval);
 
         final Set<Rectangle> result = RectangularIntervalTree.query(
                 new Rectangle(new Line(2,8), new Line(2,8)),false);
+
         LOGGER.info("Result: " + result);
+
+        Assert.assertFalse(result.contains(rectangle1));
+        Assert.assertTrue(result.contains(rectangle2));
+        Assert.assertTrue(result.contains(rectangle3));
+        Assert.assertTrue(result.contains(rectangle4));
+        Assert.assertTrue(result.contains(rectangle5));
+        Assert.assertTrue(result.contains(rectangle6));
+        Assert.assertFalse(result.contains(rectangle7));
+        Assert.assertFalse(result.contains(rectangle8));
+
     }
 
 
