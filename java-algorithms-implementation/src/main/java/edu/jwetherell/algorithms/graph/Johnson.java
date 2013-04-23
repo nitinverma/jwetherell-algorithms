@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * Johnson's algorithm is a way to find the shortest paths between all pairs of

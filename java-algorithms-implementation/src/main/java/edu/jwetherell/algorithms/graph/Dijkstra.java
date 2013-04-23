@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * Dijkstra's shortest path. Only works on non-negative path weights. Returns a

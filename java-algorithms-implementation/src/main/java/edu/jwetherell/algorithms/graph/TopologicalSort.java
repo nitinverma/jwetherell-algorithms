@@ -3,7 +3,7 @@ package edu.jwetherell.algorithms.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * In computer science, a topological sort (sometimes abbreviated topsort or

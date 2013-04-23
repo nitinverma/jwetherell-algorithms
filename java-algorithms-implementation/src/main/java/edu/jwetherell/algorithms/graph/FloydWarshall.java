@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * Floyd–Warshall algorithm is a graph analysis algorithm for finding shortest

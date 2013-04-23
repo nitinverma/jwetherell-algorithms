@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * Prim's minimum spanning tree. Only works on undirected graphs. It finds a

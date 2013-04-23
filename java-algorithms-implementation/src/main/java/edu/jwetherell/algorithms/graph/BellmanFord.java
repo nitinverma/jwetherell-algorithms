@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import edu.jwetherell.algorithms.data_structures.Graph;
+import edu.jwetherell.algorithms.dataStructures.Graph;
 
 /**
  * Bellman-Ford's shortest path. Works on both negative and positive weighted
