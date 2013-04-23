@@ -95,7 +95,11 @@ public class IntervalTree<O extends Object> {
      * @return data at index.
      */
     public IntervalData<O> query(long index) {
-        return root.query(index);
+        return query(index, (Comparator) null);
+    }
+
+    public IntervalData<O> query(long index, Comparator<O> comparator) {
+        return root.query(index, comparator);
     }
 
     /**
@@ -108,8 +112,13 @@ public class IntervalTree<O extends Object> {
      * @return data for range.
      */
     public IntervalData<O> query(long start, long end) {
-        return root.query(start, end);
+            return query(start, end, null);
     }
+
+    public IntervalData<O> query(long start, long end, Comparator<O> comparator) {
+        return root.query(start, end, comparator);
+    }
+
 
     /**
      * {@inheritDoc}
@@ -159,6 +168,10 @@ public class IntervalTree<O extends Object> {
         private Interval<O> right = null;
         private Set<IntervalData<O>> overlap = new TreeSet<IntervalData<O>>(startComparator);
 
+        public IntervalData<O> query(long index) {
+            return query(index, null);
+        }
+
         /**
          * Stabbing query
          * 
@@ -166,7 +179,7 @@ public class IntervalTree<O extends Object> {
          *            to query for.
          * @return data at index.
          */
-        public IntervalData<O> query(long index) {
+        public IntervalData<O> query(long index, Comparator<O> comparator) {
             IntervalData<O> results = null;
             if (index < center) {
                 // overlap is sorted by start point
@@ -174,7 +187,7 @@ public class IntervalTree<O extends Object> {
                     if (data.start > index)
                         break;
 
-                    IntervalData<O> temp = data.query(index);
+                    IntervalData<O> temp = data.query(index, comparator);
                     if (results == null && temp != null)
                         results = temp;
                     else if (temp != null)
@@ -188,7 +201,7 @@ public class IntervalTree<O extends Object> {
                     if (data.end < index)
                         break;
 
-                    IntervalData<O> temp = data.query(index);
+                    IntervalData<O> temp = data.query(index, comparator);
                     if (results == null && temp != null)
                         results = temp;
                     else if (temp != null)
@@ -197,7 +210,7 @@ public class IntervalTree<O extends Object> {
             }
             if (index < center) {
                 if (left != null) {
-                    IntervalData<O> temp = left.query(index);
+                    IntervalData<O> temp = left.query(index, comparator);
                     if (results == null && temp != null)
                         results = temp;
                     else if (temp != null)
@@ -205,7 +218,7 @@ public class IntervalTree<O extends Object> {
                 }
             } else if (index >= center) {
                 if (right != null) {
-                    IntervalData<O> temp = right.query(index);
+                    IntervalData<O> temp = right.query(index, comparator);
                     if (results == null && temp != null)
                         results = temp;
                     else if (temp != null)
@@ -213,6 +226,11 @@ public class IntervalTree<O extends Object> {
                 }
             }
             return results;
+        }
+
+
+        public IntervalData<O> query(long start, long end) {
+            return query(start, end, null);
         }
 
         /**
@@ -224,26 +242,26 @@ public class IntervalTree<O extends Object> {
          *            of range to query for.
          * @return data for range.
          */
-        public IntervalData<O> query(long start, long end) {
+        public IntervalData<O> query(long start, long end, Comparator<O> comparator) {
             IntervalData<O> results = null;
             for (IntervalData<O> data : overlap) {
                 if (data.start > end)
                     break;
-                IntervalData<O> temp = data.query(start, end);
+                IntervalData<O> temp = data.query(start, end, comparator);
                 if (results == null && temp != null)
                     results = temp;
                 else if (temp != null)
                     results.combined(temp);
             }
             if (left != null && start < center) {
-                IntervalData<O> temp = left.query(start, end);
+                IntervalData<O> temp = left.query(start, end, comparator);
                 if (temp != null && results == null)
                     results = temp;
                 else if (temp != null)
                     results.combined(temp);
             }
             if (right != null && end >= center) {
-                IntervalData<O> temp = right.query(start, end);
+                IntervalData<O> temp = right.query(start, end, comparator);
                 if (temp != null && results == null)
                     results = temp;
                 else if (temp != null)
@@ -271,7 +289,11 @@ public class IntervalTree<O extends Object> {
 
         private long start = Long.MIN_VALUE;
         private long end = Long.MAX_VALUE;
-        private Set<O> set = new TreeSet<O>(); // Sorted
+        private Set<O> set = null; // Should be Sorted
+
+        public Set<O> matches() {
+            return set;
+        }
 
         /**
          * Interval data using O as it's unique identifier
@@ -280,9 +302,7 @@ public class IntervalTree<O extends Object> {
          *            Object which defines the interval data
          */
         public IntervalData(long index, O object) {
-            this.start = index;
-            this.end = index;
-            this.set.add(object);
+            this(index, index, object);
         }
 
         /**
@@ -292,23 +312,46 @@ public class IntervalTree<O extends Object> {
          *            Object which defines the interval data
          */
         public IntervalData(long start, long end, O object) {
+            this(start, end, object, null);
+        }
+
+        /**
+         * Interval data using O as it's unique identifier
+         *
+         * @param start
+         * @param end
+         * @param object
+         * @param comparator
+         */
+        public IntervalData(long start, long end, O object, Comparator<O> comparator) {
             this.start = start;
             this.end = end;
+
+            if (comparator != null) {
+                this.set = new TreeSet<O>(comparator);
+            }
+            else {
+                this.set = new TreeSet<O>();
+            }
+
             this.set.add(object);
         }
 
         /**
-         * Interval data list which should all be unique
+         * Interval data set of interval data objects
          * 
-         * @param list
-         *            of interval data objects
+         * @param start
+         * @param end
+         * @param set
+         *
          */
         public IntervalData(long start, long end, Set<O> set) {
             this.start = start;
             this.end = end;
             this.set = set;
 
-            // Make sure they are unique
+            // No need it is a set.
+            /*
             Iterator<O> iter = set.iterator();
             while (iter.hasNext()) {
                 O obj1 = iter.next();
@@ -318,6 +361,7 @@ public class IntervalTree<O extends Object> {
                 if (obj1.equals(obj2))
                     throw new InvalidParameterException("Each interval data in the list must be unique.");
             }
+            */
         }
 
         /**
@@ -345,13 +389,17 @@ public class IntervalTree<O extends Object> {
             return this;
         }
 
+        public IntervalData<O> copy() {
+            return copy(null);
+        }
+
         /**
          * Deep copy of data.
          * 
          * @return deep copy.
          */
-        public IntervalData<O> copy() {
-            Set<O> listCopy = new TreeSet<O>();
+        public IntervalData<O> copy(final Comparator<O> comparator) {
+            Set<O> listCopy = comparator == null ? new TreeSet<O>() : new TreeSet<O>(comparator);
             listCopy.addAll(set);
             return new IntervalData<O>(start, end, listCopy);
         }
@@ -359,20 +407,18 @@ public class IntervalTree<O extends Object> {
         /**
          * Query inside this data object.
          * 
-         * @param start
-         *            of range to query for.
-         * @param end
-         *            of range to query for.
+         * @param index
+         *
          * @return Data queried for or NULL if it doesn't match the query.
          */
         public IntervalData<O> query(long index) {
-            if (index < this.start || index > this.end) {
-                // Ignore
-            } else {
-                return copy();
-            }
-            return null;
+            return query(index, index, null);
         }
+
+        public IntervalData<O> query(long index, Comparator<O> comparator) {
+            return query(index, index, comparator);
+        }
+
 
         /**
          * Query inside this data object.
@@ -384,10 +430,25 @@ public class IntervalTree<O extends Object> {
          * @return Data queried for or NULL if it doesn't match the query.
          */
         public IntervalData<O> query(long start, long end) {
+            return query(start, end, null);
+        }
+
+        /**
+         * Query inside this data object.
+         *
+         * @param start
+         *            of range to query for.
+         * @param end
+         *            of range to query for.
+         * @param comparator
+         *
+         * @return Data queried for or NULL if it doesn't match the query.
+         */
+        public IntervalData<O> query(long start, long end, final Comparator<O> comparator) {
             if (end < this.start || start > this.end) {
                 // Ignore
             } else {
-                return copy();
+                return copy(comparator);
             }
             return null;
         }
