@@ -132,8 +132,6 @@ public class IntervalTreeTest {
                 }
             }
 
-            LOGGER.debug("Comparison: " + comparison);
-
             return comparison;
         }
 
