@@ -25,6 +25,22 @@
 
     </properties>
 
+    <distributionManagement>
+
+        <repository>
+            <id>public.maven.repository.releases</id>
+            <name>Public Release Local Repository</name>
+            <url>file:////${user.home}/Codes/git/github/nitinverma/public.maven.repository/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>public.maven.repository.snapshots</id>
+            <name>Public Snapshots Local Repository</name>
+            <url>file:////${user.home}/Codes/git/github/nitinverma/public.maven.repository/snapshots/</url>
+        </snapshotRepository>
+
+   </distributionManagement>
+
     <build>
         <pluginManagement>
             <plugins>
