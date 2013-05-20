@@ -20,6 +20,7 @@ import java.util.*;
 public class IntervalTreeTest {
 
     private static final Log LOGGER = LogFactory.getLog(IntervalTreeTest.class);
+    private final ListComparator<Rectangle> rectangleListComparator = new ListComparator<Rectangle>();
 
     private class Rectangle implements Comparable<Rectangle> {
         private final Line xLine, yLine;
@@ -177,7 +178,8 @@ public class IntervalTreeTest {
             for ( final Line line : tmpLineMap.keySet() ) {
                 intervals.add(
                         new IntervalTree.IntervalData<List<Rectangle>>(
-                                line.getStart(), line.getEnd(), tmpLineMap.get(line)
+                                line.getStart(), line.getEnd(), tmpLineMap.get(line),
+                                rectangleListComparator
                         )
                 );
             }
@@ -229,7 +231,7 @@ public class IntervalTreeTest {
                 end = queryRectangle.getXLine().getEnd();
                 intervalTree = xIntervalTree;
             }
-            final ListComparator<Rectangle> rectangleListComparator = new ListComparator<Rectangle>();
+
 
             final IntervalTree.IntervalData<List<Rectangle>> intervalData =
                     intervalTree.query(start, end, rectangleListComparator);
